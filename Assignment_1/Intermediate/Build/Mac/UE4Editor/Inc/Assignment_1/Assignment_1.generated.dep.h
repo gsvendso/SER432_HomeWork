@@ -11,3 +11,6 @@
 #ifndef ASSIGNMENT_1_Assignment_1GameMode_generated_h
 	#include "Assignment_1GameMode.h"
 #endif
+#ifndef ASSIGNMENT_1_Pickup_generated_h
+	#include "Pickup.h"
+#endif

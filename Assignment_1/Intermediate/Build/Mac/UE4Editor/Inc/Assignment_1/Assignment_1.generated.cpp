@@ -17,17 +17,25 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 	{
 	}
 	IMPLEMENT_CLASS(AAssignment_1GameMode, 2515301344);
+	void APickup::StaticRegisterNativesAPickup()
+	{
+	}
+	IMPLEMENT_CLASS(APickup, 2954258655);
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
 	ENGINE_API class UClass* Z_Construct_UClass_ACharacter();
 	ENGINE_API class UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_AGameMode();
+	ENGINE_API class UClass* Z_Construct_UClass_AActor();
+	ENGINE_API class UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1Character_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1Character();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1GameMode_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1GameMode();
+	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_APickup_NoRegister();
+	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_APickup();
 	ASSIGNMENT_1_API class UPackage* Z_Construct_UPackage_Assignment_1();
 	UClass* Z_Construct_UClass_AAssignment_1Character_NoRegister()
 	{
@@ -118,6 +126,45 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AAssignment_1GameMode(Z_Construct_UClass_AAssignment_1GameMode, TEXT("AAssignment_1GameMode"));
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AAssignment_1GameMode);
+	UClass* Z_Construct_UClass_APickup_NoRegister()
+	{
+		return APickup::StaticClass();
+	}
+	UClass* Z_Construct_UClass_APickup()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_AActor();
+			Z_Construct_UPackage_Assignment_1();
+			OuterClass = APickup::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_PickupMesh = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("PickupMesh"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(PickupMesh, APickup), 0x00000000000a001d, Z_Construct_UClass_UStaticMeshComponent_NoRegister());
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("Pickup.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Pickup.h"));
+				MetaData->SetValue(NewProp_PickupMesh, TEXT("AllowPrivateAccess"), TEXT("true"));
+				MetaData->SetValue(NewProp_PickupMesh, TEXT("Category"), TEXT("Pickup"));
+				MetaData->SetValue(NewProp_PickupMesh, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_PickupMesh, TEXT("ModuleRelativePath"), TEXT("Pickup.h"));
+				MetaData->SetValue(NewProp_PickupMesh, TEXT("ToolTip"), TEXT("Static mesh to represent the pickup in the level"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_APickup(Z_Construct_UClass_APickup, TEXT("APickup"));
+	DEFINE_VTABLE_PTR_HELPER_CTOR(APickup);
 	UPackage* Z_Construct_UPackage_Assignment_1()
 	{
 		static UPackage* ReturnPackage = NULL;
@@ -126,8 +173,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/Assignment_1")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x7A7F5311;
-			Guid.B = 0x3BA3BA6C;
+			Guid.A = 0xDB2DD37A;
+			Guid.B = 0x3D4FB4C0;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

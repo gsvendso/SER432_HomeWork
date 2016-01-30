@@ -467,8 +467,8 @@
 /Users/Shared/UnrealEngine/4.10/Engine/Plugins/ScriptPlugin/Source/ScriptEditorPlugin/ScriptEditorPlugin.Build.cs
 /Users/Shared/UnrealEngine/4.10/Engine/Plugins/ScriptPlugin/Source/ScriptPlugin/ScriptPlugin.Build.cs
 /Users/Shared/UnrealEngine/4.10/Engine/Plugins/Slate/SlateRemote/Source/SlateRemote/SlateRemote.Build.cs
-/Users/graydonsvendson/Documents/Local Documents/~School/2016/Spring/SER 432/Assignments/Assignment_1/Source/Assignment_1/Assignment_1.Build.cs
+/Users/graydonsvendson/Documents/Local Documents/~School/2016/Spring/SER 432/Assignments/SER432_HomeWork/Assignment_1/Source/Assignment_1/Assignment_1.Build.cs
 /Users/Shared/UnrealEngine/4.10/Engine/Source/UE4Editor.Target.cs
 /Users/Shared/UnrealEngine/4.10/Engine/Source/UE4Game.Target.cs
-/Users/graydonsvendson/Documents/Local Documents/~School/2016/Spring/SER 432/Assignments/Assignment_1/Source/Assignment_1.Target.cs
-/Users/graydonsvendson/Documents/Local Documents/~School/2016/Spring/SER 432/Assignments/Assignment_1/Source/Assignment_1Editor.Target.cs
+/Users/graydonsvendson/Documents/Local Documents/~School/2016/Spring/SER 432/Assignments/SER432_HomeWork/Assignment_1/Source/Assignment_1.Target.cs
+/Users/graydonsvendson/Documents/Local Documents/~School/2016/Spring/SER 432/Assignments/SER432_HomeWork/Assignment_1/Source/Assignment_1Editor.Target.cs
