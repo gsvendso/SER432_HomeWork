@@ -22,6 +22,9 @@ public:
     
     // Return the mesh for the pickup
     FORCEINLINE class UStaticMeshComponent* GetMesh() const {return PickupMesh;}
+    
+protected:
+    
 
 private:
     // Static mesh to represent the pickup in the level
