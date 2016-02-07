@@ -14,3 +14,6 @@
 #ifndef ASSIGNMENT_1_Pickup_generated_h
 	#include "Pickup.h"
 #endif
+#ifndef ASSIGNMENT_1_BatteryPickup_generated_h
+	#include "BatteryPickup.h"
+#endif
