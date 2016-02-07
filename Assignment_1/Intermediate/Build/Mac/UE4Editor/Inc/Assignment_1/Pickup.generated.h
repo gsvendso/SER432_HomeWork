@@ -13,8 +13,38 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define ASSIGNMENT_1_Pickup_generated_h
 
-#define Assignment_1_Source_Assignment_1_Pickup_h_11_RPC_WRAPPERS
-#define Assignment_1_Source_Assignment_1_Pickup_h_11_RPC_WRAPPERS_NO_PURE_DECLS
+#define Assignment_1_Source_Assignment_1_Pickup_h_11_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execSetActive) \
+	{ \
+		P_GET_UBOOL(Z_Param_NewPickupState); \
+		P_FINISH; \
+		this->SetActive(Z_Param_NewPickupState); \
+	} \
+ \
+	DECLARE_FUNCTION(execIsActive) \
+	{ \
+		P_FINISH; \
+		*(bool*)Z_Param__Result=this->IsActive(); \
+	}
+
+
+#define Assignment_1_Source_Assignment_1_Pickup_h_11_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execSetActive) \
+	{ \
+		P_GET_UBOOL(Z_Param_NewPickupState); \
+		P_FINISH; \
+		this->SetActive(Z_Param_NewPickupState); \
+	} \
+ \
+	DECLARE_FUNCTION(execIsActive) \
+	{ \
+		P_FINISH; \
+		*(bool*)Z_Param__Result=this->IsActive(); \
+	}
+
+
 #define Assignment_1_Source_Assignment_1_Pickup_h_11_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesAPickup(); \

@@ -19,8 +19,10 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 	IMPLEMENT_CLASS(AAssignment_1GameMode, 2515301344);
 	void APickup::StaticRegisterNativesAPickup()
 	{
+		FNativeFunctionRegistrar::RegisterFunction(APickup::StaticClass(),"IsActive",(Native)&APickup::execIsActive);
+		FNativeFunctionRegistrar::RegisterFunction(APickup::StaticClass(),"SetActive",(Native)&APickup::execSetActive);
 	}
-	IMPLEMENT_CLASS(APickup, 2954258655);
+	IMPLEMENT_CLASS(APickup, 2450983081);
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
 	ENGINE_API class UClass* Z_Construct_UClass_ACharacter();
@@ -34,6 +36,8 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1Character();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1GameMode_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1GameMode();
+	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_APickup_IsActive();
+	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_APickup_SetActive();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_APickup_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_APickup();
 	ASSIGNMENT_1_API class UPackage* Z_Construct_UPackage_Assignment_1();
@@ -126,6 +130,54 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AAssignment_1GameMode(Z_Construct_UClass_AAssignment_1GameMode, TEXT("AAssignment_1GameMode"));
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AAssignment_1GameMode);
+	UFunction* Z_Construct_UFunction_APickup_IsActive()
+	{
+		struct Pickup_eventIsActive_Parms
+		{
+			bool ReturnValue;
+		};
+		UObject* Outer=Z_Construct_UClass_APickup();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("IsActive"), RF_Public|RF_Transient|RF_Native) UFunction(FObjectInitializer(), NULL, 0x14020401, 65535, sizeof(Pickup_eventIsActive_Parms));
+			CPP_BOOL_PROPERTY_BITMASK_STRUCT(ReturnValue, Pickup_eventIsActive_Parms, bool);
+			UProperty* NewProp_ReturnValue = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("ReturnValue"), RF_Public|RF_Transient|RF_Native) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(ReturnValue, Pickup_eventIsActive_Parms), 0x0000000000000580, CPP_BOOL_PROPERTY_BITMASK(ReturnValue, Pickup_eventIsActive_Parms), sizeof(bool), true);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Pickup"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Pickup.h"));
+			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Return wheither or not the pickup is active"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APickup_SetActive()
+	{
+		struct Pickup_eventSetActive_Parms
+		{
+			bool NewPickupState;
+		};
+		UObject* Outer=Z_Construct_UClass_APickup();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("SetActive"), RF_Public|RF_Transient|RF_Native) UFunction(FObjectInitializer(), NULL, 0x04020401, 65535, sizeof(Pickup_eventSetActive_Parms));
+			CPP_BOOL_PROPERTY_BITMASK_STRUCT(NewPickupState, Pickup_eventSetActive_Parms, bool);
+			UProperty* NewProp_NewPickupState = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("NewPickupState"), RF_Public|RF_Transient|RF_Native) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(NewPickupState, Pickup_eventSetActive_Parms), 0x0000000000000080, CPP_BOOL_PROPERTY_BITMASK(NewPickupState, Pickup_eventSetActive_Parms), sizeof(bool), true);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Pickup"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Pickup.h"));
+			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Allows other classes to safely change whether or not pickup is active"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_APickup_NoRegister()
 	{
 		return APickup::StaticClass();
@@ -143,10 +195,14 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				UObjectForceRegistration(OuterClass);
 				OuterClass->ClassFlags |= 0x20900080;
 
+				OuterClass->LinkChild(Z_Construct_UFunction_APickup_IsActive());
+				OuterClass->LinkChild(Z_Construct_UFunction_APickup_SetActive());
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_PickupMesh = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("PickupMesh"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(PickupMesh, APickup), 0x00000000000a001d, Z_Construct_UClass_UStaticMeshComponent_NoRegister());
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_APickup_IsActive()); // 876270745
+				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_APickup_SetActive()); // 4285122431
 				OuterClass->StaticLink();
 #if WITH_METADATA
 				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
@@ -173,8 +229,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/Assignment_1")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0xDB2DD37A;
-			Guid.B = 0x3D4FB4C0;
+			Guid.A = 0x39719AF4;
+			Guid.B = 0xE8F8A0FD;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);
