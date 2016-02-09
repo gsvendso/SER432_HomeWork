@@ -12,29 +12,36 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 	void AAssignment_1Character::StaticRegisterNativesAAssignment_1Character()
 	{
 	}
-	IMPLEMENT_CLASS(AAssignment_1Character, 3110370800);
+	IMPLEMENT_CLASS(AAssignment_1Character, 1367744407);
 	void AAssignment_1GameMode::StaticRegisterNativesAAssignment_1GameMode()
 	{
 	}
 	IMPLEMENT_CLASS(AAssignment_1GameMode, 2515301344);
+	void APickup::WasCollected()
+	{
+		ProcessEvent(FindFunctionChecked(ASSIGNMENT_1_WasCollected),NULL);
+	}
 	void APickup::StaticRegisterNativesAPickup()
 	{
 		FNativeFunctionRegistrar::RegisterFunction(APickup::StaticClass(),"IsActive",(Native)&APickup::execIsActive);
 		FNativeFunctionRegistrar::RegisterFunction(APickup::StaticClass(),"SetActive",(Native)&APickup::execSetActive);
+		FNativeFunctionRegistrar::RegisterFunction(APickup::StaticClass(),"WasCollected",(Native)&APickup::execWasCollected);
 	}
-	IMPLEMENT_CLASS(APickup, 2450983081);
+	IMPLEMENT_CLASS(APickup, 118926550);
 	void ABatteryPickup::StaticRegisterNativesABatteryPickup()
 	{
 	}
-	IMPLEMENT_CLASS(ABatteryPickup, 1132081153);
+	IMPLEMENT_CLASS(ABatteryPickup, 3355999621);
 	void ASpawnVolume::StaticRegisterNativesASpawnVolume()
 	{
 		FNativeFunctionRegistrar::RegisterFunction(ASpawnVolume::StaticClass(),"GetRandomPointInVolume",(Native)&ASpawnVolume::execGetRandomPointInVolume);
 	}
 	IMPLEMENT_CLASS(ASpawnVolume, 3841991343);
+FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
 	ENGINE_API class UClass* Z_Construct_UClass_ACharacter();
+	ENGINE_API class UClass* Z_Construct_UClass_USphereComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_AGameMode();
@@ -49,6 +56,7 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1GameMode();
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_APickup_IsActive();
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_APickup_SetActive();
+	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_APickup_WasCollected();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_APickup_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_APickup();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_ABatteryPickup_NoRegister();
@@ -78,6 +86,7 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_BaseLookUpRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("BaseLookUpRate"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(BaseLookUpRate, AAssignment_1Character), 0x0000000000020015);
 				UProperty* NewProp_BaseTurnRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("BaseTurnRate"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(BaseTurnRate, AAssignment_1Character), 0x0000000000020015);
+				UProperty* NewProp_CollectionSphere = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CollectionSphere"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(CollectionSphere, AAssignment_1Character), 0x00000000000a001d, Z_Construct_UClass_USphereComponent_NoRegister());
 				UProperty* NewProp_FollowCamera = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FollowCamera"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(FollowCamera, AAssignment_1Character), 0x00000000000a001d, Z_Construct_UClass_UCameraComponent_NoRegister());
 				UProperty* NewProp_CameraBoom = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CameraBoom"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(CameraBoom, AAssignment_1Character), 0x00000000000a001d, Z_Construct_UClass_USpringArmComponent_NoRegister());
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
@@ -94,6 +103,11 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(NewProp_BaseTurnRate, TEXT("Category"), TEXT("Camera"));
 				MetaData->SetValue(NewProp_BaseTurnRate, TEXT("ModuleRelativePath"), TEXT("Assignment_1Character.h"));
 				MetaData->SetValue(NewProp_BaseTurnRate, TEXT("ToolTip"), TEXT("Base turn rate, in deg/sec. Other scaling may affect final turn rate."));
+				MetaData->SetValue(NewProp_CollectionSphere, TEXT("AllowPrivateAccess"), TEXT("true"));
+				MetaData->SetValue(NewProp_CollectionSphere, TEXT("Category"), TEXT("Camera"));
+				MetaData->SetValue(NewProp_CollectionSphere, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_CollectionSphere, TEXT("ModuleRelativePath"), TEXT("Assignment_1Character.h"));
+				MetaData->SetValue(NewProp_CollectionSphere, TEXT("ToolTip"), TEXT("Collection sphere"));
 				MetaData->SetValue(NewProp_FollowCamera, TEXT("AllowPrivateAccess"), TEXT("true"));
 				MetaData->SetValue(NewProp_FollowCamera, TEXT("Category"), TEXT("Camera"));
 				MetaData->SetValue(NewProp_FollowCamera, TEXT("EditInline"), TEXT("true"));
@@ -194,6 +208,23 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_APickup_WasCollected()
+	{
+		UObject* Outer=Z_Construct_UClass_APickup();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("WasCollected"), RF_Public|RF_Transient|RF_Native) UFunction(FObjectInitializer(), NULL, 0x08020C00, 65535);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Pickup.h"));
+			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Function to all when the pickup is collected"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_APickup_NoRegister()
 	{
 		return APickup::StaticClass();
@@ -213,12 +244,14 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 				OuterClass->LinkChild(Z_Construct_UFunction_APickup_IsActive());
 				OuterClass->LinkChild(Z_Construct_UFunction_APickup_SetActive());
+				OuterClass->LinkChild(Z_Construct_UFunction_APickup_WasCollected());
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_PickupMesh = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("PickupMesh"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(PickupMesh, APickup), 0x00000000000a001d, Z_Construct_UClass_UStaticMeshComponent_NoRegister());
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_APickup_IsActive()); // 876270745
 				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_APickup_SetActive()); // 4285122431
+				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_APickup_WasCollected()); // 1841043071
 				OuterClass->StaticLink();
 #if WITH_METADATA
 				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
@@ -352,8 +385,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/Assignment_1")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x169B2C21;
-			Guid.B = 0x4E56349E;
+			Guid.A = 0x3AFEB6BF;
+			Guid.B = 0x36FD77AB;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);
