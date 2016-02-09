@@ -15,7 +15,7 @@ AAssignment_1GameMode::AAssignment_1GameMode()
 	}
     
     // Base Decay Rate
-    DecayRate = 0.1f;
+    DecayRate = 0.01f;
 }
 
 void AAssignment_1GameMode::Tick(float DeltaTime)
