@@ -54,8 +54,6 @@ void ABatteryCollectorGameMode::BeginPlay()
 			CurrentWidget->AddToViewport();
 		}
 	}
-
-	
 }
 
 void ABatteryCollectorGameMode::Tick(float DeltaTime)

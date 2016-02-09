@@ -35,7 +35,7 @@ void AAssignment_1GameMode::BeginPlay()
         CurrentWidget = CreateWidget<UUserWidget>(GetWorld(), HUDWidgetClass);
         if (CurrentWidget != nullptr)
         {
-            CreateWidget->AddToViewport();
+            CurrentWidget->AddToViewport();
         }
     }
 }
@@ -55,4 +55,9 @@ void AAssignment_1GameMode::Tick(float DeltaTime)
             MyCharacter->UpdatePower(-DeltaTime * DecayRate*(MyCharacter->GetInitialPower()));
         }
     }
+}
+
+float AAssignment_1GameMode::GetPowerToWin() const
+{
+    return PowerToWin;
 }
