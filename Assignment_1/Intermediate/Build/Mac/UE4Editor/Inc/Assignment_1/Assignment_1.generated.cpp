@@ -20,7 +20,7 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 	void AAssignment_1GameMode::StaticRegisterNativesAAssignment_1GameMode()
 	{
 	}
-	IMPLEMENT_CLASS(AAssignment_1GameMode, 2515301344);
+	IMPLEMENT_CLASS(AAssignment_1GameMode, 1794593497);
 	void APickup::WasCollected()
 	{
 		ProcessEvent(FindFunctionChecked(ASSIGNMENT_1_WasCollected),NULL);
@@ -255,6 +255,9 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->ClassFlags |= 0x2088028C;
 
 
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_DecayRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("DecayRate"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(DecayRate, AAssignment_1GameMode), 0x0000080000010005);
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->ClassConfigName = FName(TEXT("Game"));
 				OuterClass->StaticLink();
 #if WITH_METADATA
@@ -263,6 +266,9 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("Assignment_1GameMode.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Assignment_1GameMode.h"));
 				MetaData->SetValue(OuterClass, TEXT("ShowCategories"), TEXT("Input|MouseInput Input|TouchInput"));
+				MetaData->SetValue(NewProp_DecayRate, TEXT("Category"), TEXT("Power"));
+				MetaData->SetValue(NewProp_DecayRate, TEXT("ModuleRelativePath"), TEXT("Assignment_1GameMode.h"));
+				MetaData->SetValue(NewProp_DecayRate, TEXT("ToolTip"), TEXT("The rate at which the character loses power"));
 #endif
 			}
 		}
@@ -503,7 +509,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/Assignment_1")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x2082A486;
+			Guid.A = 0x5B611D9E;
 			Guid.B = 0x926A3F37;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;

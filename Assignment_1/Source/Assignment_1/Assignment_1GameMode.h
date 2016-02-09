@@ -10,6 +10,13 @@ class AAssignment_1GameMode : public AGameMode
 
 public:
 	AAssignment_1GameMode();
+    
+    virtual void Tick(float DeltaTime) override;
+    
+protected:
+    /** The rate at which the character loses power */
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Power")
+    float DecayRate;
 };
 
 
