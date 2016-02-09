@@ -50,6 +50,10 @@ AAssignment_1Character::AAssignment_1Character()
     // Set a base power level for the character
     InitialPower = 2000.f;
     CharacterPower = InitialPower;
+    
+    // Set the Dependence of the speed on the power level
+    SpeedFactor = 0.75f;
+    BaseSpeed = 10.0f;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -190,7 +194,15 @@ float AAssignment_1Character::GetCurrentPower()
     return CharacterPower;
 }
 
+// Called whenever Power is Increased or Decreased
 void AAssignment_1Character::UpdatePower(float PowerChange)
 {
+    // Change Power
     CharacterPower = CharacterPower + PowerChange;
+    
+    // Change Speed based upon Power
+    GetCharacterMovement()->MaxWalkSpeed = BaseSpeed + (SpeedFactor * CharacterPower);
+    
+    // Call Visual Effect
+    PowerChangeEffect();
 }

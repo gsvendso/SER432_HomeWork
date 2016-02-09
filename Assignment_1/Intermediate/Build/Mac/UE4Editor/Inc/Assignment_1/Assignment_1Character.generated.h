@@ -69,6 +69,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
+#define Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_EVENT_PARMS
+extern ASSIGNMENT_1_API  FName ASSIGNMENT_1_PowerChangeEffect;
+#define Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_CALLBACK_WRAPPERS
 #define Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesAAssignment_1Character(); \
@@ -113,11 +116,15 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AAssignment_1Character); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AAssignment_1Character)
 
 
-#define Assignment_1_Source_Assignment_1_Assignment_1Character_h_6_PROLOG
+#define Assignment_1_Source_Assignment_1_Assignment_1Character_h_6_PROLOG \
+	Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_EVENT_PARMS
+
+
 #define Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_RPC_WRAPPERS \
+	Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_CALLBACK_WRAPPERS \
 	Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_INCLASS \
 	Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_STANDARD_CONSTRUCTORS \
 public: \
@@ -128,6 +135,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_RPC_WRAPPERS_NO_PURE_DECLS \
+	Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_CALLBACK_WRAPPERS \
 	Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_INCLASS_NO_PURE_DECLS \
 	Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_ENHANCED_CONSTRUCTORS \
 private: \

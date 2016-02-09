@@ -9,6 +9,10 @@
 #include "Assignment_1.generated.dep.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
+	void AAssignment_1Character::PowerChangeEffect()
+	{
+		ProcessEvent(FindFunctionChecked(ASSIGNMENT_1_PowerChangeEffect),NULL);
+	}
 	void AAssignment_1Character::StaticRegisterNativesAAssignment_1Character()
 	{
 		FNativeFunctionRegistrar::RegisterFunction(AAssignment_1Character::StaticClass(),"CollectPickup",(Native)&AAssignment_1Character::execCollectPickup);
@@ -16,7 +20,7 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 		FNativeFunctionRegistrar::RegisterFunction(AAssignment_1Character::StaticClass(),"GetInitialPower",(Native)&AAssignment_1Character::execGetInitialPower);
 		FNativeFunctionRegistrar::RegisterFunction(AAssignment_1Character::StaticClass(),"UpdatePower",(Native)&AAssignment_1Character::execUpdatePower);
 	}
-	IMPLEMENT_CLASS(AAssignment_1Character, 2559251310);
+	IMPLEMENT_CLASS(AAssignment_1Character, 2199041280);
 	void AAssignment_1GameMode::StaticRegisterNativesAAssignment_1GameMode()
 	{
 	}
@@ -41,6 +45,7 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 		FNativeFunctionRegistrar::RegisterFunction(ASpawnVolume::StaticClass(),"GetRandomPointInVolume",(Native)&ASpawnVolume::execGetRandomPointInVolume);
 	}
 	IMPLEMENT_CLASS(ASpawnVolume, 3841991343);
+FName ASSIGNMENT_1_PowerChangeEffect = FName(TEXT("PowerChangeEffect"));
 FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
@@ -57,6 +62,7 @@ FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_AAssignment_1Character_CollectPickup();
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_AAssignment_1Character_GetCurrentPower();
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_AAssignment_1Character_GetInitialPower();
+	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_AAssignment_1Character_PowerChangeEffect();
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_AAssignment_1Character_UpdatePower();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1Character_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1Character();
@@ -137,6 +143,23 @@ FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_AAssignment_1Character_PowerChangeEffect()
+	{
+		UObject* Outer=Z_Construct_UClass_AAssignment_1Character();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("PowerChangeEffect"), RF_Public|RF_Transient|RF_Native) UFunction(FObjectInitializer(), NULL, 0x08080800, 65535);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Power"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Assignment_1Character.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UFunction* Z_Construct_UFunction_AAssignment_1Character_UpdatePower()
 	{
 		struct Assignment_1Character_eventUpdatePower_Parms
@@ -180,10 +203,13 @@ FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 				OuterClass->LinkChild(Z_Construct_UFunction_AAssignment_1Character_CollectPickup());
 				OuterClass->LinkChild(Z_Construct_UFunction_AAssignment_1Character_GetCurrentPower());
 				OuterClass->LinkChild(Z_Construct_UFunction_AAssignment_1Character_GetInitialPower());
+				OuterClass->LinkChild(Z_Construct_UFunction_AAssignment_1Character_PowerChangeEffect());
 				OuterClass->LinkChild(Z_Construct_UFunction_AAssignment_1Character_UpdatePower());
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_CharacterPower = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CharacterPower"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(CharacterPower, AAssignment_1Character), 0x0000000000020001);
+				UProperty* NewProp_BaseSpeed = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("BaseSpeed"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(BaseSpeed, AAssignment_1Character), 0x0000080000000005);
+				UProperty* NewProp_SpeedFactor = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("SpeedFactor"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(SpeedFactor, AAssignment_1Character), 0x0000080000000005);
 				UProperty* NewProp_InitialPower = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("InitialPower"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(InitialPower, AAssignment_1Character), 0x0000080000000005);
 				UProperty* NewProp_BaseLookUpRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("BaseLookUpRate"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(BaseLookUpRate, AAssignment_1Character), 0x0000000000020015);
 				UProperty* NewProp_BaseTurnRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("BaseTurnRate"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(BaseTurnRate, AAssignment_1Character), 0x0000000000020015);
@@ -194,6 +220,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1Character_CollectPickup()); // 529654183
 				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1Character_GetCurrentPower()); // 3917155780
 				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1Character_GetInitialPower()); // 1875936684
+				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1Character_PowerChangeEffect()); // 3036556253
 				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1Character_UpdatePower()); // 2527013493
 				OuterClass->ClassConfigName = FName(TEXT("Game"));
 				OuterClass->StaticLink();
@@ -205,6 +232,15 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(NewProp_CharacterPower, TEXT("Category"), TEXT("Power"));
 				MetaData->SetValue(NewProp_CharacterPower, TEXT("ModuleRelativePath"), TEXT("Assignment_1Character.h"));
 				MetaData->SetValue(NewProp_CharacterPower, TEXT("ToolTip"), TEXT("Current power level of our character"));
+				MetaData->SetValue(NewProp_BaseSpeed, TEXT("BlueprintProtected"), TEXT("true"));
+				MetaData->SetValue(NewProp_BaseSpeed, TEXT("Category"), TEXT("Power"));
+				MetaData->SetValue(NewProp_BaseSpeed, TEXT("ModuleRelativePath"), TEXT("Assignment_1Character.h"));
+				MetaData->SetValue(NewProp_BaseSpeed, TEXT("ToolTip"), TEXT("Speed for when power level is 0"));
+				MetaData->SetValue(NewProp_SpeedFactor, TEXT("BlueprintProtected"), TEXT("true"));
+				MetaData->SetValue(NewProp_SpeedFactor, TEXT("Category"), TEXT("Power"));
+				MetaData->SetValue(NewProp_SpeedFactor, TEXT("ModuleRelativePath"), TEXT("Assignment_1Character.h"));
+				MetaData->SetValue(NewProp_SpeedFactor, TEXT("ToolTip"), TEXT("Multiplier for character speed"));
+				MetaData->SetValue(NewProp_InitialPower, TEXT("BlueprintProtected"), TEXT("true"));
 				MetaData->SetValue(NewProp_InitialPower, TEXT("Category"), TEXT("Power"));
 				MetaData->SetValue(NewProp_InitialPower, TEXT("ModuleRelativePath"), TEXT("Assignment_1Character.h"));
 				MetaData->SetValue(NewProp_InitialPower, TEXT("ToolTip"), TEXT("Starting power level of our character"));
@@ -509,8 +545,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/Assignment_1")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x5B611D9E;
-			Guid.B = 0x926A3F37;
+			Guid.A = 0xB699242F;
+			Guid.B = 0xD01DAB40;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);
