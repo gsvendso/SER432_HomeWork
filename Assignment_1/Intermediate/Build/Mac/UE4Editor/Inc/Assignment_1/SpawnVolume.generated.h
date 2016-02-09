@@ -8,13 +8,30 @@
 #include "ObjectBase.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+struct FVector;
 #ifdef ASSIGNMENT_1_SpawnVolume_generated_h
 #error "SpawnVolume.generated.h already included, missing '#pragma once' in SpawnVolume.h"
 #endif
 #define ASSIGNMENT_1_SpawnVolume_generated_h
 
-#define Assignment_1_Source_Assignment_1_SpawnVolume_h_11_RPC_WRAPPERS
-#define Assignment_1_Source_Assignment_1_SpawnVolume_h_11_RPC_WRAPPERS_NO_PURE_DECLS
+#define Assignment_1_Source_Assignment_1_SpawnVolume_h_11_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execGetRandomPointInVolume) \
+	{ \
+		P_FINISH; \
+		*(FVector*)Z_Param__Result=this->GetRandomPointInVolume(); \
+	}
+
+
+#define Assignment_1_Source_Assignment_1_SpawnVolume_h_11_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execGetRandomPointInVolume) \
+	{ \
+		P_FINISH; \
+		*(FVector*)Z_Param__Result=this->GetRandomPointInVolume(); \
+	}
+
+
 #define Assignment_1_Source_Assignment_1_SpawnVolume_h_11_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesASpawnVolume(); \

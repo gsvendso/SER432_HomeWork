@@ -29,7 +29,7 @@ public:
     
 private:
     /** Box Component to specify where pickups should be spawned */
-    UPROPERTY(VisibileAnywhere, BlueprintReadOnly, Category = "Spawning", meta = (AllowPrivateAccess = "true"))
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Spawning", meta = (AllowPrivateAccess = "true"))
     class UBoxComponent* WhereToSpawn;
 	
 };
