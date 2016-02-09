@@ -23,8 +23,9 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 	IMPLEMENT_CLASS(AAssignment_1Character, 2199041280);
 	void AAssignment_1GameMode::StaticRegisterNativesAAssignment_1GameMode()
 	{
+		FNativeFunctionRegistrar::RegisterFunction(AAssignment_1GameMode::StaticClass(),"GetPowerToWin",(Native)&AAssignment_1GameMode::execGetPowerToWin);
 	}
-	IMPLEMENT_CLASS(AAssignment_1GameMode, 1794593497);
+	IMPLEMENT_CLASS(AAssignment_1GameMode, 1345218141);
 	void APickup::WasCollected()
 	{
 		ProcessEvent(FindFunctionChecked(ASSIGNMENT_1_WasCollected),NULL);
@@ -54,6 +55,7 @@ FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 	ENGINE_API class UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_AGameMode();
+	UMG_API class UClass* Z_Construct_UClass_UUserWidget_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_AActor();
 	ENGINE_API class UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FVector();
@@ -66,6 +68,7 @@ FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_AAssignment_1Character_UpdatePower();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1Character_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1Character();
+	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_AAssignment_1GameMode_GetPowerToWin();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1GameMode_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1GameMode();
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_APickup_IsActive();
@@ -273,6 +276,29 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AAssignment_1Character(Z_Construct_UClass_AAssignment_1Character, TEXT("AAssignment_1Character"));
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AAssignment_1Character);
+	UFunction* Z_Construct_UFunction_AAssignment_1GameMode_GetPowerToWin()
+	{
+		struct Assignment_1GameMode_eventGetPowerToWin_Parms
+		{
+			float ReturnValue;
+		};
+		UObject* Outer=Z_Construct_UClass_AAssignment_1GameMode();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("GetPowerToWin"), RF_Public|RF_Transient|RF_Native) UFunction(FObjectInitializer(), NULL, 0x54020401, 65535, sizeof(Assignment_1GameMode_eventGetPowerToWin_Parms));
+			UProperty* NewProp_ReturnValue = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("ReturnValue"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(ReturnValue, Assignment_1GameMode_eventGetPowerToWin_Parms), 0x0000000000000580);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Power"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Assignment_1GameMode.h"));
+			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Returns power needed to win - needed for the HUD"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_AAssignment_1GameMode_NoRegister()
 	{
 		return AAssignment_1GameMode::StaticClass();
@@ -290,10 +316,15 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				UObjectForceRegistration(OuterClass);
 				OuterClass->ClassFlags |= 0x2088028C;
 
+				OuterClass->LinkChild(Z_Construct_UFunction_AAssignment_1GameMode_GetPowerToWin());
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_CurrentWidget = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CurrentWidget"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(CurrentWidget, AAssignment_1GameMode), 0x0000080000000000, Z_Construct_UClass_UUserWidget_NoRegister());
+				UProperty* NewProp_HUDWidgetClass = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("HUDWidgetClass"), RF_Public|RF_Transient|RF_Native) UClassProperty(CPP_PROPERTY_BASE(HUDWidgetClass, AAssignment_1GameMode), 0x0004080000010005, Z_Construct_UClass_UUserWidget_NoRegister());
+				UProperty* NewProp_PowerToWin = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("PowerToWin"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(PowerToWin, AAssignment_1GameMode), 0x0000080000010005);
 				UProperty* NewProp_DecayRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("DecayRate"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(DecayRate, AAssignment_1GameMode), 0x0000080000010005);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1GameMode_GetPowerToWin()); // 4189824268
 				OuterClass->ClassConfigName = FName(TEXT("Game"));
 				OuterClass->StaticLink();
 #if WITH_METADATA
@@ -302,6 +333,17 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("Assignment_1GameMode.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Assignment_1GameMode.h"));
 				MetaData->SetValue(OuterClass, TEXT("ShowCategories"), TEXT("Input|MouseInput Input|TouchInput"));
+				MetaData->SetValue(NewProp_CurrentWidget, TEXT("ModuleRelativePath"), TEXT("Assignment_1GameMode.h"));
+				MetaData->SetValue(NewProp_CurrentWidget, TEXT("ToolTip"), TEXT("The instance of the HUD"));
+				MetaData->SetValue(NewProp_HUDWidgetClass, TEXT("Blueprintprotected"), TEXT("true"));
+				MetaData->SetValue(NewProp_HUDWidgetClass, TEXT("Category"), TEXT("Power"));
+				MetaData->SetValue(NewProp_HUDWidgetClass, TEXT("ModuleRelativePath"), TEXT("Assignment_1GameMode.h"));
+				MetaData->SetValue(NewProp_HUDWidgetClass, TEXT("ToolTip"), TEXT("The Widget class to use for our HUD screen"));
+				MetaData->SetValue(NewProp_PowerToWin, TEXT("Blueprintprotected"), TEXT("true"));
+				MetaData->SetValue(NewProp_PowerToWin, TEXT("Category"), TEXT("Power"));
+				MetaData->SetValue(NewProp_PowerToWin, TEXT("ModuleRelativePath"), TEXT("Assignment_1GameMode.h"));
+				MetaData->SetValue(NewProp_PowerToWin, TEXT("ToolTip"), TEXT("The power needed to win the game"));
+				MetaData->SetValue(NewProp_DecayRate, TEXT("Blueprintprotected"), TEXT("true"));
 				MetaData->SetValue(NewProp_DecayRate, TEXT("Category"), TEXT("Power"));
 				MetaData->SetValue(NewProp_DecayRate, TEXT("ModuleRelativePath"), TEXT("Assignment_1GameMode.h"));
 				MetaData->SetValue(NewProp_DecayRate, TEXT("ToolTip"), TEXT("The rate at which the character loses power"));
@@ -545,8 +587,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/Assignment_1")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0xB699242F;
-			Guid.B = 0xD01DAB40;
+			Guid.A = 0x7B99A205;
+			Guid.B = 0x9FEF6006;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

@@ -4,6 +4,7 @@
 #include "Assignment_1GameMode.h"
 #include "Assignment_1Character.h"
 #include "Kismet/GameplayStatics.h"
+#include "Blueprint/UserWidget.h"
 
 AAssignment_1GameMode::AAssignment_1GameMode()
 {
@@ -16,6 +17,27 @@ AAssignment_1GameMode::AAssignment_1GameMode()
     
     // Base Decay Rate
     DecayRate = 0.01f;
+}
+
+void AAssignment_1GameMode::BeginPlay()
+{
+    Super::BeginPlay();
+    
+    // Set the score to beat
+    AAssignment_1Character * MyCharacter = Cast<AAssignment_1Character>(UGameplayStatics::GetPlayerPawn(this, 0));
+    if (MyCharacter)
+    {
+        PowerToWin = (MyCharacter->GetInitialPower()) * 1.25f;
+    }
+    
+    if (HUDWidgetClass != nullptr)
+    {
+        CurrentWidget = CreateWidget<UUserWidget>(GetWorld(), HUDWidgetClass);
+        if (CurrentWidget != nullptr)
+        {
+            CreateWidget->AddToViewport();
+        }
+    }
 }
 
 void AAssignment_1GameMode::Tick(float DeltaTime)

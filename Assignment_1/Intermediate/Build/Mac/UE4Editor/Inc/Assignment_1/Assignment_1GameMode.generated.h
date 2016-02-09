@@ -13,8 +13,24 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define ASSIGNMENT_1_Assignment_1GameMode_generated_h
 
-#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_RPC_WRAPPERS
-#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_RPC_WRAPPERS_NO_PURE_DECLS
+#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execGetPowerToWin) \
+	{ \
+		P_FINISH; \
+		*(float*)Z_Param__Result=this->GetPowerToWin(); \
+	}
+
+
+#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execGetPowerToWin) \
+	{ \
+		P_FINISH; \
+		*(float*)Z_Param__Result=this->GetPowerToWin(); \
+	}
+
+
 #define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesAAssignment_1GameMode(); \
