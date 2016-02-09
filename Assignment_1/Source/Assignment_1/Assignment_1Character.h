@@ -29,6 +29,21 @@ public:
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
+    
+    /** Accessor function for initial power */
+    UFUNCTION(BlueprintPure, Category = "Power")
+    float GetInitialPower();
+    
+    /** Accessor function for current power */
+    UFUNCTION(BlueprintPure, Category = "Power")
+    float GetCurrentPower();
+    
+    /** 
+     Function to update the character's power
+     * @param PowerChange This is the amount ot change the power by, and it can positive or negative.
+     */
+    UFUNCTION(BlueprintCallable, Category = "Power")
+    void UpdatePower(float PowerChange);
 
 protected:
 
@@ -64,6 +79,15 @@ protected:
     /** Called when we press a key to collect any pickups inside the CollectionSphere */
     UFUNCTION(BlueprintCallable, Category = "Pickups")
     void CollectPickup();
+    
+    /** Starting power level of our character */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Power")
+    float InitialPower;
+    
+private:
+    /** Current power level of our character */
+    UPROPERTY(VisibleAnywhere, Category = "Power")
+    float CharacterPower;
 
 public:
 	/** Returns CameraBoom subobject **/

@@ -45,6 +45,10 @@ AAssignment_1Character::AAssignment_1Character()
     
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+    
+    // Set a base power level for the character
+    InitialPower = 2000.f;
+    CharacterPower = InitialPower;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -154,4 +158,21 @@ void AAssignment_1Character::CollectPickup()
             TestPickup->SetActive(false);
         }
     }
+}
+
+// Reports Starting Power
+float AAssignment_1Character::GetInitialPower()
+{
+    return InitialPower;
+}
+
+// Reports Current Power
+float AAssignment_1Character::GetCurrentPower()
+{
+    return CharacterPower;
+}
+
+void AAssignment_1Character::UpdatePower(float PowerChange)
+{
+    CharacterPower = CharacterPower + PowerChange;
 }
