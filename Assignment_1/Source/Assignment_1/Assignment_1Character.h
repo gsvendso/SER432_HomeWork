@@ -60,6 +60,10 @@ protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 	// End of APawn interface
+    
+    /** Called when we press a key to collect any pickups inside the CollectionSphere */
+    UFUNCTION(BlueprintCallable, Category = "Pickups")
+    void CollectPickup();
 
 public:
 	/** Returns CameraBoom subobject **/

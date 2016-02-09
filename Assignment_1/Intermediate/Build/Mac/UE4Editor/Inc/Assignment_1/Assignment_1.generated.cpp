@@ -11,8 +11,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 	void AAssignment_1Character::StaticRegisterNativesAAssignment_1Character()
 	{
+		FNativeFunctionRegistrar::RegisterFunction(AAssignment_1Character::StaticClass(),"CollectPickup",(Native)&AAssignment_1Character::execCollectPickup);
 	}
-	IMPLEMENT_CLASS(AAssignment_1Character, 1367744407);
+	IMPLEMENT_CLASS(AAssignment_1Character, 3071953929);
 	void AAssignment_1GameMode::StaticRegisterNativesAAssignment_1GameMode()
 	{
 	}
@@ -50,6 +51,7 @@ FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API class UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 
+	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_AAssignment_1Character_CollectPickup();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1Character_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1Character();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1GameMode_NoRegister();
@@ -65,6 +67,24 @@ FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_ASpawnVolume_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_ASpawnVolume();
 	ASSIGNMENT_1_API class UPackage* Z_Construct_UPackage_Assignment_1();
+	UFunction* Z_Construct_UFunction_AAssignment_1Character_CollectPickup()
+	{
+		UObject* Outer=Z_Construct_UClass_AAssignment_1Character();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("CollectPickup"), RF_Public|RF_Transient|RF_Native) UFunction(FObjectInitializer(), NULL, 0x04080401, 65535);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Pickups"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Assignment_1Character.h"));
+			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Called when we press a key to collect any pickups inside the CollectionSphere"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_AAssignment_1Character_NoRegister()
 	{
 		return AAssignment_1Character::StaticClass();
@@ -82,6 +102,7 @@ FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 				UObjectForceRegistration(OuterClass);
 				OuterClass->ClassFlags |= 0x20800080;
 
+				OuterClass->LinkChild(Z_Construct_UFunction_AAssignment_1Character_CollectPickup());
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_BaseLookUpRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("BaseLookUpRate"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(BaseLookUpRate, AAssignment_1Character), 0x0000000000020015);
@@ -90,6 +111,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_FollowCamera = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FollowCamera"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(FollowCamera, AAssignment_1Character), 0x00000000000a001d, Z_Construct_UClass_UCameraComponent_NoRegister());
 				UProperty* NewProp_CameraBoom = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CameraBoom"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(CameraBoom, AAssignment_1Character), 0x00000000000a001d, Z_Construct_UClass_USpringArmComponent_NoRegister());
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1Character_CollectPickup()); // 529654183
 				OuterClass->ClassConfigName = FName(TEXT("Game"));
 				OuterClass->StaticLink();
 #if WITH_METADATA
@@ -385,8 +407,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/Assignment_1")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x3AFEB6BF;
-			Guid.B = 0x36FD77AB;
+			Guid.A = 0xBA51A2A1;
+			Guid.B = 0x1E3BF387;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);
