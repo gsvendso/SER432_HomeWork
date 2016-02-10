@@ -57,8 +57,9 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EBatteryPlayState(EBatte
 	void ASpawnVolume::StaticRegisterNativesASpawnVolume()
 	{
 		FNativeFunctionRegistrar::RegisterFunction(ASpawnVolume::StaticClass(),"GetRandomPointInVolume",(Native)&ASpawnVolume::execGetRandomPointInVolume);
+		FNativeFunctionRegistrar::RegisterFunction(ASpawnVolume::StaticClass(),"SetSpawningActive",(Native)&ASpawnVolume::execSetSpawningActive);
 	}
-	IMPLEMENT_CLASS(ASpawnVolume, 3841991343);
+	IMPLEMENT_CLASS(ASpawnVolume, 1100259455);
 FName ASSIGNMENT_1_PowerChangeEffect = FName(TEXT("PowerChangeEffect"));
 FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 #if USE_COMPILED_IN_NATIVES
@@ -94,6 +95,7 @@ FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_ABatteryPickup_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_ABatteryPickup();
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_ASpawnVolume_GetRandomPointInVolume();
+	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_ASpawnVolume_SetSpawningActive();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_ASpawnVolume_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_ASpawnVolume();
 	ASSIGNMENT_1_API class UPackage* Z_Construct_UPackage_Assignment_1();
@@ -591,6 +593,30 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_ASpawnVolume_SetSpawningActive()
+	{
+		struct SpawnVolume_eventSetSpawningActive_Parms
+		{
+			bool bShouldSpawn;
+		};
+		UObject* Outer=Z_Construct_UClass_ASpawnVolume();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("SetSpawningActive"), RF_Public|RF_Transient|RF_Native) UFunction(FObjectInitializer(), NULL, 0x04020401, 65535, sizeof(SpawnVolume_eventSetSpawningActive_Parms));
+			CPP_BOOL_PROPERTY_BITMASK_STRUCT(bShouldSpawn, SpawnVolume_eventSetSpawningActive_Parms, bool);
+			UProperty* NewProp_bShouldSpawn = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("bShouldSpawn"), RF_Public|RF_Transient|RF_Native) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(bShouldSpawn, SpawnVolume_eventSetSpawningActive_Parms), 0x0000000000000080, CPP_BOOL_PROPERTY_BITMASK(bShouldSpawn, SpawnVolume_eventSetSpawningActive_Parms), sizeof(bool), true);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Spawning"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("SpawnVolume.h"));
+			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("This function toggles whether or not a spawn volume spawns picksup"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_ASpawnVolume_NoRegister()
 	{
 		return ASpawnVolume::StaticClass();
@@ -609,6 +635,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->ClassFlags |= 0x20900080;
 
 				OuterClass->LinkChild(Z_Construct_UFunction_ASpawnVolume_GetRandomPointInVolume());
+				OuterClass->LinkChild(Z_Construct_UFunction_ASpawnVolume_SetSpawningActive());
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_WhereToSpawn = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("WhereToSpawn"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(WhereToSpawn, ASpawnVolume), 0x00000000000a001d, Z_Construct_UClass_UBoxComponent_NoRegister());
@@ -617,6 +644,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_WhatToSpawn = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("WhatToSpawn"), RF_Public|RF_Transient|RF_Native) UClassProperty(CPP_PROPERTY_BASE(WhatToSpawn, ASpawnVolume), 0x0004080000000001, Z_Construct_UClass_APickup_NoRegister());
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_ASpawnVolume_GetRandomPointInVolume()); // 375333788
+				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_ASpawnVolume_SetSpawningActive()); // 3941254933
 				OuterClass->StaticLink();
 #if WITH_METADATA
 				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
@@ -652,8 +680,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/Assignment_1")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0xDC864D47;
-			Guid.B = 0x6BFF0392;
+			Guid.A = 0x4A5F0524;
+			Guid.B = 0xB65E01C8;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

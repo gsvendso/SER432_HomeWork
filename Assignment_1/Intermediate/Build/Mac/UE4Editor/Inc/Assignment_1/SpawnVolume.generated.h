@@ -16,6 +16,13 @@ struct FVector;
 
 #define Assignment_1_Source_Assignment_1_SpawnVolume_h_11_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execSetSpawningActive) \
+	{ \
+		P_GET_UBOOL(Z_Param_bShouldSpawn); \
+		P_FINISH; \
+		this->SetSpawningActive(Z_Param_bShouldSpawn); \
+	} \
+ \
 	DECLARE_FUNCTION(execGetRandomPointInVolume) \
 	{ \
 		P_FINISH; \
@@ -24,6 +31,13 @@ struct FVector;
 
 
 #define Assignment_1_Source_Assignment_1_SpawnVolume_h_11_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execSetSpawningActive) \
+	{ \
+		P_GET_UBOOL(Z_Param_bShouldSpawn); \
+		P_FINISH; \
+		this->SetSpawningActive(Z_Param_bShouldSpawn); \
+	} \
  \
 	DECLARE_FUNCTION(execGetRandomPointInVolume) \
 	{ \
