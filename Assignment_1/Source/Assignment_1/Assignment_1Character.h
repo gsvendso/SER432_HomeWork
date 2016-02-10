@@ -44,6 +44,8 @@ public:
      */
     UFUNCTION(BlueprintCallable, Category = "Power")
     void UpdatePower(float PowerChange);
+    
+    virtual void NotifyActorBeginOverlap(class AActor* Other) override;
 
 protected:
 
@@ -94,6 +96,9 @@ protected:
     
     UFUNCTION(BlueprintImplementableEvent, Category = "Power")
     void PowerChangeEffect();
+    
+    UFUNCTION(BlueprintImplementableEvent, Category = "Power")
+    void WireCollisionEffect(class AActor* Wire);
     
 private:
     /** Current power level of our character */

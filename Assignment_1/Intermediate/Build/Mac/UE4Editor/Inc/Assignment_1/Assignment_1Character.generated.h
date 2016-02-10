@@ -8,6 +8,7 @@
 #include "ObjectBase.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class AActor;
 #ifdef ASSIGNMENT_1_Assignment_1Character_generated_h
 #error "Assignment_1Character.generated.h already included, missing '#pragma once' in Assignment_1Character.h"
 #endif
@@ -69,8 +70,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_EVENT_PARMS
+#define Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_EVENT_PARMS \
+	struct Assignment_1Character_eventWireCollisionEffect_Parms \
+	{ \
+		AActor* Wire; \
+	};
+
+
 extern ASSIGNMENT_1_API  FName ASSIGNMENT_1_PowerChangeEffect;
+extern ASSIGNMENT_1_API  FName ASSIGNMENT_1_WireCollisionEffect;
 #define Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_CALLBACK_WRAPPERS
 #define Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_INCLASS_NO_PURE_DECLS \
 	private: \

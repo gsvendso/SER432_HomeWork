@@ -4,7 +4,6 @@
 
 #include "Pickup.h"
 #include "WirePickup.generated.h"
-#include "ParticleDefinitions.h"
 
 /**
  * 
@@ -32,6 +31,4 @@ protected:
     /** Set the amount of power the Wire drains from the character */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))
     float DrainPower;
-    
-    TSubobjectPtr<UParticleSystemComponent> SparksParticleSystem;
 };

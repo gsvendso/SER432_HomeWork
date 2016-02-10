@@ -4,6 +4,7 @@
 #include "Assignment_1Character.h"
 #include "Pickup.h"
 #include "BatteryPickup.h"
+#include "WirePickup.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AAssignment_1Character
@@ -205,4 +206,18 @@ void AAssignment_1Character::UpdatePower(float PowerChange)
     
     // Call Visual Effect
     PowerChangeEffect();
+}
+
+ void AAssignment_1Character::NotifyActorBeginOverlap(class AActor* Other)
+{
+    if (Other != nullptr)
+    {
+        AWirePickup *TestWire = Cast<AWirePickup>(Other);
+        if (TestWire && !TestWire->IsPendingKill() && TestWire->IsActive())
+        {
+            TestWire->WasCollected();
+            UpdatePower(TestWire->GetDrain());
+            WireCollisionEffect(TestWire);
+        }
+    }
 }

@@ -10,9 +10,7 @@ AWirePickup::AWirePickup()
     GetMesh()->SetSimulatePhysics(true);
     
     // Drain power level of the Wire
-    DrainPower = 50.f;
-    
-    ConstructorHelpers::FObjectfinder<UParticleSystem> ArbitraryParticleName
+    DrainPower = -50.f;
 }
 
 void AWirePickup::BeginPlay()
