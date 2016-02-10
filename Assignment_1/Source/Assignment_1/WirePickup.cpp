@@ -11,6 +11,13 @@ AWirePickup::AWirePickup()
     
     // Drain power level of the Wire
     DrainPower = 50.f;
+    
+    ConstructorHelpers::FObjectfinder<UParticleSystem> ArbitraryParticleName
+}
+
+void AWirePickup::BeginPlay()
+{
+    Super::BeginPlay();
 }
 
 void AWirePickup::WasCollected_Implementation()
