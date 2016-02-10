@@ -176,7 +176,7 @@ void AAssignment_1Character::CollectPickup()
         }
     }
     
-    if (CollectedPower > 0)
+    if (CollectedPower != 0)
     {
         UpdatePower(CollectedPower);
     }

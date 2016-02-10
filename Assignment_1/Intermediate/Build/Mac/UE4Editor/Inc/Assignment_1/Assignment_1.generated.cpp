@@ -54,6 +54,10 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EBatteryPlayState(EBatte
 	{
 	}
 	IMPLEMENT_CLASS(ABatteryPickup, 1031577811);
+	void AWirePickup::StaticRegisterNativesAWirePickup()
+	{
+	}
+	IMPLEMENT_CLASS(AWirePickup, 3120517342);
 	void ASpawnVolume::StaticRegisterNativesASpawnVolume()
 	{
 		FNativeFunctionRegistrar::RegisterFunction(ASpawnVolume::StaticClass(),"GetRandomPointInVolume",(Native)&ASpawnVolume::execGetRandomPointInVolume);
@@ -94,6 +98,8 @@ FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_APickup();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_ABatteryPickup_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_ABatteryPickup();
+	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AWirePickup_NoRegister();
+	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AWirePickup();
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_ASpawnVolume_GetRandomPointInVolume();
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_ASpawnVolume_SetSpawningActive();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_ASpawnVolume_NoRegister();
@@ -570,6 +576,44 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ABatteryPickup(Z_Construct_UClass_ABatteryPickup, TEXT("ABatteryPickup"));
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ABatteryPickup);
+	UClass* Z_Construct_UClass_AWirePickup_NoRegister()
+	{
+		return AWirePickup::StaticClass();
+	}
+	UClass* Z_Construct_UClass_AWirePickup()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_APickup();
+			Z_Construct_UPackage_Assignment_1();
+			OuterClass = AWirePickup::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_DrainPower = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("DrainPower"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(DrainPower, AWirePickup), 0x0000080000000005);
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("WirePickup.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("WirePickup.h"));
+				MetaData->SetValue(NewProp_DrainPower, TEXT("BlueprintProtected"), TEXT("true"));
+				MetaData->SetValue(NewProp_DrainPower, TEXT("Category"), TEXT("Power"));
+				MetaData->SetValue(NewProp_DrainPower, TEXT("ModuleRelativePath"), TEXT("WirePickup.h"));
+				MetaData->SetValue(NewProp_DrainPower, TEXT("ToolTip"), TEXT("Set the amount of power the Wire drains from the character"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_AWirePickup(Z_Construct_UClass_AWirePickup, TEXT("AWirePickup"));
+	DEFINE_VTABLE_PTR_HELPER_CTOR(AWirePickup);
 	UFunction* Z_Construct_UFunction_ASpawnVolume_GetRandomPointInVolume()
 	{
 		struct SpawnVolume_eventGetRandomPointInVolume_Parms
@@ -680,8 +724,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/Assignment_1")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x4A5F0524;
-			Guid.B = 0xB65E01C8;
+			Guid.A = 0xC774CDD5;
+			Guid.B = 0xD29A3A65;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

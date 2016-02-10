@@ -17,6 +17,9 @@
 #ifndef ASSIGNMENT_1_BatteryPickup_generated_h
 	#include "BatteryPickup.h"
 #endif
+#ifndef ASSIGNMENT_1_WirePickup_generated_h
+	#include "WirePickup.h"
+#endif
 #ifndef ASSIGNMENT_1_SpawnVolume_generated_h
 	#include "SpawnVolume.h"
 #endif
