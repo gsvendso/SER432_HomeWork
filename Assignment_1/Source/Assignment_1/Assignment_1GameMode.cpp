@@ -23,6 +23,20 @@ AAssignment_1GameMode::AAssignment_1GameMode()
 void AAssignment_1GameMode::BeginPlay()
 {
     Super::BeginPlay();
+    
+    // Find all spawn volume actors
+    TArray<AActor*> FoundActors;
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnVolume::StaticClass(), FoundActors);
+    
+    for (auto Actor : FoundActors)
+    {
+        ASpawnVolume* SpawnVolumeActor = Cast<ASpawnVolume>(Actor);
+        if (SpawnVolumeActor)
+        {
+            SpawnVolumeActors.AddUnique(SpawnVolumeActor);
+        }
+    }
+    
     SetCurrentState(EBatteryPlayState::EPlaying);
     
     // Set the score to beat
@@ -38,18 +52,6 @@ void AAssignment_1GameMode::BeginPlay()
         if (CurrentWidget != nullptr)
         {
             CurrentWidget->AddToViewport();
-        }
-    }
-    
-    // Find all spawn volume actors
-    TArray<AActor*> FoundActors;
-    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnVolume::StaticClass(), FoundActors);
-    for (auto Actor : FoundActors)
-    {
-        ASpawnVolume* SpawnVolumeActor = Cast<ASpawnVolume>(Actor);
-        if (SpawnVolumeActor)
-        {
-            SpawnVolumeActors.AddUnique(SpawnVolumeActor);
         }
     }
 }
@@ -93,4 +95,62 @@ EBatteryPlayState AAssignment_1GameMode::GetCurrentState() const
 void AAssignment_1GameMode::SetCurrentState(EBatteryPlayState NewState)
 {
     CurrentState = NewState;
+    HandleCurrentState(CurrentState);
+}
+
+void AAssignment_1GameMode::HandleCurrentState(EBatteryPlayState NewState)
+{
+    switch (NewState)
+    {
+        // If the game is playing
+        case EBatteryPlayState::EPlaying:
+        {
+            // Spawn Volumes Active
+            for (ASpawnVolume * Volume : SpawnVolumeActors)
+            {
+                Volume->SetSpawningActive(true);
+            }
+        }
+        break;
+        // If we've won the game
+        case EBatteryPlayState::EWon:
+        {
+            // Spawn Volumes Inactive
+            for (ASpawnVolume * Volume : SpawnVolumeActors)
+            {
+                Volume->SetSpawningActive(false);
+            }
+        }
+        break;
+        // If we've lost the game
+        case EBatteryPlayState::EGameOver:
+        {
+            // Spawn Volumes Inactives
+            for (ASpawnVolume * Volume : SpawnVolumeActors)
+            {
+                Volume->SetSpawningActive(false);
+            }
+            // Block Player Input
+            APlayerController * PlayerController = UGameplayStatics::GetPlayerController(this, 0);
+            if (PlayerController)
+            {
+                PlayerController->SetCinematicMode(true, true, true);
+            }
+            // Ragdoll the character
+            ACharacter* MyCharacter = UGameplayStatics::GetPlayerCharacter(this, 0);
+            if (MyCharacter)
+            {
+                MyCharacter->GetMesh()->SetSimulatePhysics(true);
+                MyCharacter->GetMovementComponent()->MovementState.bCanJump = false;
+            }
+        }
+        break;
+        // Debug
+        default:
+        case EBatteryPlayState::EUnknown:
+        {
+            // Do nothing
+        }
+        break;
+    }
 }
