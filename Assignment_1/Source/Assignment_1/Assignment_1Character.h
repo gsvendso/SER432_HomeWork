@@ -98,7 +98,7 @@ protected:
     void PowerChangeEffect();
     
     UFUNCTION(BlueprintImplementableEvent, Category = "Power")
-    void WireCollisionEffect(class AActor* Wire);
+    void WireCollisionEffect(FVector WireLocation);
     
 private:
     /** Current power level of our character */

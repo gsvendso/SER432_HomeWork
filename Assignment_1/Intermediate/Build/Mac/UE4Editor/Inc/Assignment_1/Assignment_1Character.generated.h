@@ -8,7 +8,7 @@
 #include "ObjectBase.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-class AActor;
+struct FVector;
 #ifdef ASSIGNMENT_1_Assignment_1Character_generated_h
 #error "Assignment_1Character.generated.h already included, missing '#pragma once' in Assignment_1Character.h"
 #endif
@@ -73,7 +73,7 @@ class AActor;
 #define Assignment_1_Source_Assignment_1_Assignment_1Character_h_9_EVENT_PARMS \
 	struct Assignment_1Character_eventWireCollisionEffect_Parms \
 	{ \
-		AActor* Wire; \
+		FVector WireLocation; \
 	};
 
 

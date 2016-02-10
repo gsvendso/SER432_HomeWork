@@ -13,10 +13,10 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 	{
 		ProcessEvent(FindFunctionChecked(ASSIGNMENT_1_PowerChangeEffect),NULL);
 	}
-	void AAssignment_1Character::WireCollisionEffect(AActor* Wire)
+	void AAssignment_1Character::WireCollisionEffect(FVector WireLocation)
 	{
 		Assignment_1Character_eventWireCollisionEffect_Parms Parms;
-		Parms.Wire=Wire;
+		Parms.WireLocation=WireLocation;
 		ProcessEvent(FindFunctionChecked(ASSIGNMENT_1_WireCollisionEffect),&Parms);
 	}
 	void AAssignment_1Character::StaticRegisterNativesAAssignment_1Character()
@@ -26,7 +26,7 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 		FNativeFunctionRegistrar::RegisterFunction(AAssignment_1Character::StaticClass(),"GetInitialPower",(Native)&AAssignment_1Character::execGetInitialPower);
 		FNativeFunctionRegistrar::RegisterFunction(AAssignment_1Character::StaticClass(),"UpdatePower",(Native)&AAssignment_1Character::execUpdatePower);
 	}
-	IMPLEMENT_CLASS(AAssignment_1Character, 2897045886);
+	IMPLEMENT_CLASS(AAssignment_1Character, 932199581);
 static class UEnum* EBatteryPlayState_StaticEnum()
 {
 	static class UEnum* Singleton = NULL;
@@ -75,7 +75,7 @@ FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 FName ASSIGNMENT_1_WireCollisionEffect = FName(TEXT("WireCollisionEffect"));
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
-	ENGINE_API class UClass* Z_Construct_UClass_AActor_NoRegister();
+	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API class UClass* Z_Construct_UClass_ACharacter();
 	ENGINE_API class UClass* Z_Construct_UClass_USphereComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
@@ -84,7 +84,6 @@ FName ASSIGNMENT_1_WireCollisionEffect = FName(TEXT("WireCollisionEffect"));
 	UMG_API class UClass* Z_Construct_UClass_UUserWidget_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_AActor();
 	ENGINE_API class UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
-	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API class UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_AAssignment_1Character_CollectPickup();
@@ -224,8 +223,8 @@ FName ASSIGNMENT_1_WireCollisionEffect = FName(TEXT("WireCollisionEffect"));
 		static UFunction* ReturnFunction = NULL;
 		if (!ReturnFunction)
 		{
-			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("WireCollisionEffect"), RF_Public|RF_Transient|RF_Native) UFunction(FObjectInitializer(), NULL, 0x08080800, 65535, sizeof(Assignment_1Character_eventWireCollisionEffect_Parms));
-			UProperty* NewProp_Wire = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("Wire"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(Wire, Assignment_1Character_eventWireCollisionEffect_Parms), 0x0000000000000080, Z_Construct_UClass_AActor_NoRegister());
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("WireCollisionEffect"), RF_Public|RF_Transient|RF_Native) UFunction(FObjectInitializer(), NULL, 0x08880800, 65535, sizeof(Assignment_1Character_eventWireCollisionEffect_Parms));
+			UProperty* NewProp_WireLocation = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("WireLocation"), RF_Public|RF_Transient|RF_Native) UStructProperty(CPP_PROPERTY_BASE(WireLocation, Assignment_1Character_eventWireCollisionEffect_Parms), 0x0000000000000080, Z_Construct_UScriptStruct_FVector());
 			ReturnFunction->Bind();
 			ReturnFunction->StaticLink();
 #if WITH_METADATA
@@ -276,7 +275,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1Character_GetInitialPower()); // 1875936684
 				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1Character_PowerChangeEffect()); // 3036556253
 				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1Character_UpdatePower()); // 2527013493
-				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1Character_WireCollisionEffect()); // 2635352627
+				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1Character_WireCollisionEffect()); // 1733990810
 				OuterClass->ClassConfigName = FName(TEXT("Game"));
 				OuterClass->StaticLink();
 #if WITH_METADATA
@@ -753,7 +752,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/Assignment_1")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x4B72E5FC;
+			Guid.A = 0x0C79583D;
 			Guid.B = 0x45F3479D;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;

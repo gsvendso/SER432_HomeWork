@@ -217,7 +217,7 @@ void AAssignment_1Character::UpdatePower(float PowerChange)
         {
             TestWire->WasCollected();
             UpdatePower(TestWire->GetDrain());
-            WireCollisionEffect(TestWire);
+            WireCollisionEffect(TestWire->GetActorLocation());
         }
     }
 }
