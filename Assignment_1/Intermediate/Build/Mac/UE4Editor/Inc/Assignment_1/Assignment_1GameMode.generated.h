@@ -13,7 +13,13 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define ASSIGNMENT_1_Assignment_1GameMode_generated_h
 
-#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_RPC_WRAPPERS \
+#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execGetCurrentState) \
+	{ \
+		P_FINISH; \
+		*(TEnumAsByte<EBatteryPlayState>*)Z_Param__Result=this->GetCurrentState(); \
+	} \
  \
 	DECLARE_FUNCTION(execGetPowerToWin) \
 	{ \
@@ -22,7 +28,13 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_RPC_WRAPPERS_NO_PURE_DECLS \
+#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execGetCurrentState) \
+	{ \
+		P_FINISH; \
+		*(TEnumAsByte<EBatteryPlayState>*)Z_Param__Result=this->GetCurrentState(); \
+	} \
  \
 	DECLARE_FUNCTION(execGetPowerToWin) \
 	{ \
@@ -31,7 +43,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_INCLASS_NO_PURE_DECLS \
+#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesAAssignment_1GameMode(); \
 	friend ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1GameMode(); \
@@ -42,7 +54,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	virtual UObject* _getUObject() const override { return const_cast<AAssignment_1GameMode*>(this); }
 
 
-#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_INCLASS \
+#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_INCLASS \
 	private: \
 	static void StaticRegisterNativesAAssignment_1GameMode(); \
 	friend ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1GameMode(); \
@@ -53,7 +65,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	virtual UObject* _getUObject() const override { return const_cast<AAssignment_1GameMode*>(this); }
 
 
-#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_STANDARD_CONSTRUCTORS \
+#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	ASSIGNMENT_1_API AAssignment_1GameMode(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AAssignment_1GameMode) \
@@ -65,7 +77,7 @@ private: \
 public:
 
 
-#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_ENHANCED_CONSTRUCTORS \
+#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private copy-constructor, should never be used */ \
 	ASSIGNMENT_1_API AAssignment_1GameMode(const AAssignment_1GameMode& InCopy); \
@@ -75,23 +87,23 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AAssignment_1GameMode); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AAssignment_1GameMode)
 
 
-#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_6_PROLOG
-#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_GENERATED_BODY_LEGACY \
+#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_16_PROLOG
+#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_RPC_WRAPPERS \
-	Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_INCLASS \
-	Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_STANDARD_CONSTRUCTORS \
+	Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_RPC_WRAPPERS \
+	Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_INCLASS \
+	Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_GENERATED_BODY \
+#define Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_RPC_WRAPPERS_NO_PURE_DECLS \
-	Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_INCLASS_NO_PURE_DECLS \
-	Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_9_ENHANCED_CONSTRUCTORS \
+	Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_RPC_WRAPPERS_NO_PURE_DECLS \
+	Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_INCLASS_NO_PURE_DECLS \
+	Assignment_1_Source_Assignment_1_Assignment_1GameMode_h_19_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -100,4 +112,9 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 #define CURRENT_FILE_ID Assignment_1_Source_Assignment_1_Assignment_1GameMode_h
 
 
+#define FOREACH_ENUM_EBATTERYPLAYSTATE(op) \
+	op(EBatteryPlayState::EPlaying) \
+	op(EBatteryPlayState::EGameOver) \
+	op(EBatteryPlayState::EWon) \
+	op(EBatteryPlayState::EUnknown) 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

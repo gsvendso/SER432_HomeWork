@@ -22,6 +22,7 @@ AAssignment_1GameMode::AAssignment_1GameMode()
 void AAssignment_1GameMode::BeginPlay()
 {
     Super::BeginPlay();
+    SetCurrentState(EBatteryPlayState::EPlaying);
     
     // Set the score to beat
     AAssignment_1Character * MyCharacter = Cast<AAssignment_1Character>(UGameplayStatics::GetPlayerPawn(this, 0));
@@ -48,11 +49,20 @@ void AAssignment_1GameMode::Tick(float DeltaTime)
     AAssignment_1Character * MyCharacter = Cast<AAssignment_1Character>(UGameplayStatics::GetPlayerPawn(this, 0));
     if (MyCharacter)
     {
+        // If our power is greater than needed to win, Set the games state to won
+        if (MyCharacter->GetCurrentPower() > PowerToWin)
+        {
+            SetCurrentState(EBatteryPlayState::EWon);
+        }
         // If the character's power is positive
-        if (MyCharacter->GetCurrentPower() > 0.f)
+        else if (MyCharacter->GetCurrentPower() > 0.f)
         {
             // Decrease the Character's power using the decay rate
             MyCharacter->UpdatePower(-DeltaTime * DecayRate*(MyCharacter->GetInitialPower()));
+        }
+        else
+        {
+            SetCurrentState(EBatteryPlayState::EGameOver);
         }
     }
 }
@@ -60,4 +70,14 @@ void AAssignment_1GameMode::Tick(float DeltaTime)
 float AAssignment_1GameMode::GetPowerToWin() const
 {
     return PowerToWin;
+}
+
+EBatteryPlayState AAssignment_1GameMode::GetCurrentState() const
+{
+    return CurrentState;
+}
+
+void AAssignment_1GameMode::SetCurrentState(EBatteryPlayState NewState)
+{
+    CurrentState = NewState;
 }

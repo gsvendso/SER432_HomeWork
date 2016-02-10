@@ -21,11 +21,24 @@ void EmptyLinkFunctionForGeneratedCodeAssignment_1() {}
 		FNativeFunctionRegistrar::RegisterFunction(AAssignment_1Character::StaticClass(),"UpdatePower",(Native)&AAssignment_1Character::execUpdatePower);
 	}
 	IMPLEMENT_CLASS(AAssignment_1Character, 2199041280);
+static class UEnum* EBatteryPlayState_StaticEnum()
+{
+	static class UEnum* Singleton = NULL;
+	if (!Singleton)
+	{
+		extern ASSIGNMENT_1_API class UEnum* Z_Construct_UEnum_Assignment_1_EBatteryPlayState();
+		extern ASSIGNMENT_1_API class UPackage* Z_Construct_UPackage_Assignment_1();
+		Singleton = GetStaticEnum(Z_Construct_UEnum_Assignment_1_EBatteryPlayState, Z_Construct_UPackage_Assignment_1(), TEXT("EBatteryPlayState"));
+	}
+	return Singleton;
+}
+static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EBatteryPlayState(EBatteryPlayState_StaticEnum, TEXT("/Script/Assignment_1"));
 	void AAssignment_1GameMode::StaticRegisterNativesAAssignment_1GameMode()
 	{
+		FNativeFunctionRegistrar::RegisterFunction(AAssignment_1GameMode::StaticClass(),"GetCurrentState",(Native)&AAssignment_1GameMode::execGetCurrentState);
 		FNativeFunctionRegistrar::RegisterFunction(AAssignment_1GameMode::StaticClass(),"GetPowerToWin",(Native)&AAssignment_1GameMode::execGetPowerToWin);
 	}
-	IMPLEMENT_CLASS(AAssignment_1GameMode, 1345218141);
+	IMPLEMENT_CLASS(AAssignment_1GameMode, 2604635686);
 	void APickup::WasCollected()
 	{
 		ProcessEvent(FindFunctionChecked(ASSIGNMENT_1_WasCollected),NULL);
@@ -68,6 +81,8 @@ FName ASSIGNMENT_1_WasCollected = FName(TEXT("WasCollected"));
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_AAssignment_1Character_UpdatePower();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1Character_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1Character();
+	ASSIGNMENT_1_API class UEnum* Z_Construct_UEnum_Assignment_1_EBatteryPlayState();
+	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_AAssignment_1GameMode_GetCurrentState();
 	ASSIGNMENT_1_API class UFunction* Z_Construct_UFunction_AAssignment_1GameMode_GetPowerToWin();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1GameMode_NoRegister();
 	ASSIGNMENT_1_API class UClass* Z_Construct_UClass_AAssignment_1GameMode();
@@ -276,6 +291,54 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AAssignment_1Character(Z_Construct_UClass_AAssignment_1Character, TEXT("AAssignment_1Character"));
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AAssignment_1Character);
+	UEnum* Z_Construct_UEnum_Assignment_1_EBatteryPlayState()
+	{
+		UPackage* Outer=Z_Construct_UPackage_Assignment_1();
+		extern uint32 Get_Z_Construct_UEnum_Assignment_1_EBatteryPlayState_CRC();
+		static UEnum* ReturnEnum = FindExistingEnumIfHotReload(Outer, TEXT("EBatteryPlayState"), 0, Get_Z_Construct_UEnum_Assignment_1_EBatteryPlayState_CRC());
+		if (!ReturnEnum)
+		{
+			ReturnEnum = new(EC_InternalUseOnlyConstructor, Outer, TEXT("EBatteryPlayState"), RF_Public|RF_Transient|RF_Native) UEnum(FObjectInitializer());
+			TArray<TPair<FName, uint8>> EnumNames;
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EBatteryPlayState::EPlaying")), 0));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EBatteryPlayState::EGameOver")), 1));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EBatteryPlayState::EWon")), 2));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EBatteryPlayState::EUnknown")), 3));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EBatteryPlayState::EBatteryPlayState_MAX")), 4));
+			ReturnEnum->SetEnums(EnumNames, UEnum::ECppForm::EnumClass);
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnEnum->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnEnum, TEXT("BlueprintType"), TEXT("true"));
+			MetaData->SetValue(ReturnEnum, TEXT("ModuleRelativePath"), TEXT("Assignment_1GameMode.h"));
+			MetaData->SetValue(ReturnEnum, TEXT("ToolTip"), TEXT("enum to store the current state of gameplay"));
+#endif
+		}
+		return ReturnEnum;
+	}
+	uint32 Get_Z_Construct_UEnum_Assignment_1_EBatteryPlayState_CRC() { return 3745082263U; }
+	UFunction* Z_Construct_UFunction_AAssignment_1GameMode_GetCurrentState()
+	{
+		struct Assignment_1GameMode_eventGetCurrentState_Parms
+		{
+			TEnumAsByte<EBatteryPlayState> ReturnValue;
+		};
+		UObject* Outer=Z_Construct_UClass_AAssignment_1GameMode();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("GetCurrentState"), RF_Public|RF_Transient|RF_Native) UFunction(FObjectInitializer(), NULL, 0x54020401, 65535, sizeof(Assignment_1GameMode_eventGetCurrentState_Parms));
+			UProperty* NewProp_ReturnValue = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("ReturnValue"), RF_Public|RF_Transient|RF_Native) UByteProperty(CPP_PROPERTY_BASE(ReturnValue, Assignment_1GameMode_eventGetCurrentState_Parms), 0x0000000000000580, Z_Construct_UEnum_Assignment_1_EBatteryPlayState());
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Power"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Assignment_1GameMode.h"));
+			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Returns the current Playing State"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UFunction* Z_Construct_UFunction_AAssignment_1GameMode_GetPowerToWin()
 	{
 		struct Assignment_1GameMode_eventGetPowerToWin_Parms
@@ -316,6 +379,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				UObjectForceRegistration(OuterClass);
 				OuterClass->ClassFlags |= 0x2088028C;
 
+				OuterClass->LinkChild(Z_Construct_UFunction_AAssignment_1GameMode_GetCurrentState());
 				OuterClass->LinkChild(Z_Construct_UFunction_AAssignment_1GameMode_GetPowerToWin());
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -324,6 +388,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_PowerToWin = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("PowerToWin"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(PowerToWin, AAssignment_1GameMode), 0x0000080000010005);
 				UProperty* NewProp_DecayRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("DecayRate"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(DecayRate, AAssignment_1GameMode), 0x0000080000010005);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1GameMode_GetCurrentState()); // 3977847337
 				OuterClass->AddFunctionToFunctionMap(Z_Construct_UFunction_AAssignment_1GameMode_GetPowerToWin()); // 4189824268
 				OuterClass->ClassConfigName = FName(TEXT("Game"));
 				OuterClass->StaticLink();
@@ -587,8 +652,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/Assignment_1")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x7B99A205;
-			Guid.B = 0x9FEF6006;
+			Guid.A = 0xDC864D47;
+			Guid.B = 0x6BFF0392;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);
