@@ -11,14 +11,10 @@ class AAssignment_1Character : public ACharacter
 	/** Camera boom positioning the camera behind the character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
-    
-    /** Follow camera */
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-    class UCameraComponent* FollowCamera;
-    
-    /** Collection sphere */
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-    class USphereComponent* CollectionSphere;
+
+	/** Follow camera */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	class UCameraComponent* FollowCamera;
 public:
 	AAssignment_1Character();
 
@@ -29,23 +25,6 @@ public:
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
-    
-    /** Accessor function for initial power */
-    UFUNCTION(BlueprintPure, Category = "Power")
-    float GetInitialPower();
-    
-    /** Accessor function for current power */
-    UFUNCTION(BlueprintPure, Category = "Power")
-    float GetCurrentPower();
-    
-    /** 
-     Function to update the character's power
-     * @param PowerChange This is the amount ot change the power by, and it can positive or negative.
-     */
-    UFUNCTION(BlueprintCallable, Category = "Power")
-    void UpdatePower(float PowerChange);
-    
-    virtual void NotifyActorBeginOverlap(class AActor* Other) override;
 
 protected:
 
@@ -77,40 +56,11 @@ protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 	// End of APawn interface
-    
-    /** Called when we press a key to collect any pickups inside the CollectionSphere */
-    UFUNCTION(BlueprintCallable, Category = "Pickups")
-    void CollectPickup();
-    
-    /** Starting power level of our character */
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))
-    float InitialPower;
-    
-    /** Multiplier for character speed */
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))
-    float SpeedFactor;
-
-    /** Speed for when power level is 0 */
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))
-    float BaseSpeed;
-    
-    UFUNCTION(BlueprintImplementableEvent, Category = "Power")
-    void PowerChangeEffect();
-    
-    UFUNCTION(BlueprintImplementableEvent, Category = "Power")
-    void WireCollisionEffect(FVector WireLocation);
-    
-private:
-    /** Current power level of our character */
-    UPROPERTY(VisibleAnywhere, Category = "Power")
-    float CharacterPower;
 
 public:
 	/** Returns CameraBoom subobject **/
-    FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
-    /** Returns FollowCamera subobject **/
-    FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
-    /** Returns CollectionSphere subobject **/
-    FORCEINLINE class USphereComponent* GetCollectionSphere() const { return CollectionSphere; }
+	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+	/** Returns FollowCamera subobject **/
+	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 };
 

@@ -3,6 +3,6 @@
 #ifndef __ASSIGNMENT_1_H__
 #define __ASSIGNMENT_1_H__
 
-#include "Engine.h"
+#include "EngineMinimal.h"
 
 #endif

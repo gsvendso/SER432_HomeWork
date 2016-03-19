@@ -2,9 +2,6 @@
 
 #include "Assignment_1.h"
 #include "Assignment_1Character.h"
-#include "Pickup.h"
-#include "BatteryPickup.h"
-#include "WirePickup.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AAssignment_1Character
@@ -40,21 +37,8 @@ AAssignment_1Character::AAssignment_1Character()
 	FollowCamera->AttachTo(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
-    // Create the collection sphere
-    CollectionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("CollectionSphere"));
-    CollectionSphere->AttachTo(RootComponent);
-    CollectionSphere->SetSphereRadius(200.f);
-    
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
-    
-    // Set a base power level for the character
-    InitialPower = 2000.f;
-    CharacterPower = InitialPower;
-    
-    // Set the Dependence of the speed on the power level
-    SpeedFactor = 0.75f;
-    BaseSpeed = 10.0f;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -66,8 +50,7 @@ void AAssignment_1Character::SetupPlayerInputComponent(class UInputComponent* In
 	check(InputComponent);
 	InputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	InputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
-    
-    InputComponent->BindAction("Collect", IE_Pressed, this, &AAssignment_1Character::CollectPickup);
+
 	InputComponent->BindAxis("MoveForward", this, &AAssignment_1Character::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AAssignment_1Character::MoveRight);
 
@@ -141,83 +124,4 @@ void AAssignment_1Character::MoveRight(float Value)
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
 	}
-}
-
-void AAssignment_1Character::CollectPickup()
-{
-    // Get all overlapping Actors and store them in an array
-    TArray<AActor *> CollectedActors;
-    CollectionSphere->GetOverlappingActors(CollectedActors);
-    
-    // Keep track of collected power
-    float CollectedPower = 0;
-    
-    // For each Actor we collected
-    for (int32 iCollected = 0; iCollected < CollectedActors.Num(); ++iCollected)
-    {
-        // Cast the actor to APickup
-        APickup* const TestPickup = Cast<APickup>(CollectedActors[iCollected]);
-    
-        // If the cast is successful and the pickup is valid and active
-        if (TestPickup && !TestPickup->IsPendingKill() && TestPickup->IsActive())
-        {
-            // Call the pickup's WasCollected function
-            TestPickup->WasCollected();
-            
-            // Check to see if the pickup is also a battery
-            ABatteryPickup * const TestBattery = Cast<ABatteryPickup>(TestPickup);
-            if (TestBattery)
-            {
-                // Increase the collected power
-                CollectedPower = CollectedPower + TestBattery->GetPower();
-            }
-            
-            // Deactivate the pickup
-            TestPickup->SetActive(false);
-        }
-    }
-    
-    if (CollectedPower != 0)
-    {
-        UpdatePower(CollectedPower);
-    }
-}
-
-// Reports Starting Power
-float AAssignment_1Character::GetInitialPower()
-{
-    return InitialPower;
-}
-
-// Reports Current Power
-float AAssignment_1Character::GetCurrentPower()
-{
-    return CharacterPower;
-}
-
-// Called whenever Power is Increased or Decreased
-void AAssignment_1Character::UpdatePower(float PowerChange)
-{
-    // Change Power
-    CharacterPower = CharacterPower + PowerChange;
-    
-    // Change Speed based upon Power
-    GetCharacterMovement()->MaxWalkSpeed = BaseSpeed + (SpeedFactor * CharacterPower);
-    
-    // Call Visual Effect
-    PowerChangeEffect();
-}
-
- void AAssignment_1Character::NotifyActorBeginOverlap(class AActor* Other)
-{
-    if (Other != nullptr)
-    {
-        AWirePickup *TestWire = Cast<AWirePickup>(Other);
-        if (TestWire && !TestWire->IsPendingKill() && TestWire->IsActive())
-        {
-            TestWire->WasCollected();
-            UpdatePower(TestWire->GetDrain());
-            WireCollisionEffect(TestWire->GetActorLocation());
-        }
-    }
 }
